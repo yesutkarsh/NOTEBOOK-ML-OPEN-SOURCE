@@ -1,4 +1,4 @@
-# 🎙️ AI-Powered Podcast Generator
+# 🎙️ NOTEBOOK ML WITH NODE JS OPEN SOURCE
 
 An open-source project that dynamically generates AI-driven podcast-style conversations using **Google Cloud Text-to-Speech** (SSML), saves audio files, and combines them into a final podcast episode.
 
