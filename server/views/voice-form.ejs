@@ -1,0 +1,56 @@
+// views/voice-form.ejs
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text to Speech Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to Speech Converter</h1>
+    <form action="/voice/generate" method="POST">
+        <div class="form-group">
+            <label for="maleText">Male Voice Text:</label>
+            <textarea name="maleText" id="maleText" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="femaleText">Female Voice Text:</label>
+            <textarea name="femaleText" id="femaleText" required></textarea>
+        </div>
+        
+        <button type="submit">Generate Speech</button>
+    </form>
+    
+    <p><a href="/voice/list">View Generated Audio Files</a></p>
+</body>
+</html>

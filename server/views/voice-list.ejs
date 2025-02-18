@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .audio-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .final-audio {
+            background-color: #e3f2fd;
+            border: 2px solid #2196f3;
+            margin-top: 30px;
+            padding: 20px;
+        }
+        .audio-number {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .final-label {
+            color: #2196f3;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .generate-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .generate-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    
+    <div class="controls">
+        <a href="/voice/generate-all" class="generate-btn">Generate New Conversation</a>
+    </div>
+
+    <% if (audioFiles.length > 0) { %>
+        <% audioFiles.forEach(function(file) { %>
+            <div class="audio-item <%= file.isFinal ? 'final-audio' : '' %>">
+                <div class="<%= file.isFinal ? 'final-label' : 'audio-number' %>">
+                    <%= file.isFinal ? 'Complete Conversation (Merged)' : 'Audio ' + file.name.split('.')[0] %>
+                </div>
+                <audio controls>
+                    <source src="<%= file.url %>" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No audio files generated yet. Click the button above to generate the conversation.</p>
+    <% } %>
+</body>
+</html>
